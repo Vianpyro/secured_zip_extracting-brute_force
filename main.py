@@ -26,7 +26,7 @@ def crack_zip(file_name: str) -> str:
 
 
 class Cracker:
-    def __init__(self, start_from: str=None, lowercase: bool=True, uppercase: bool=False, digits: bool=False, additional_characters: str|list=None, max_lenght: int=None) -> None:
+    def __init__(self, start_from: str=None, lowercase: bool=True, uppercase: bool=False, digits: bool=False, punctuation=False, additional_characters: str|list=None, max_lenght: int=None) -> None:
         self.password_max_lenght = 100 if max_lenght is None else max_lenght + 1
         self.password_chars = str()
         self.password = str() if start_from is None else start_from
@@ -34,6 +34,7 @@ class Cracker:
         if lowercase: self.password_chars += string.ascii_lowercase
         if uppercase: self.password_chars += string.ascii_uppercase
         if digits: self.password_chars += string.digits
+        if punctuation: self.password_chars += string.punctuation
 
         if isinstance(additional_characters, str):
             self.password_chars += additional_characters
